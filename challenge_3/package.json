@@ -1,0 +1,35 @@
+{
+  "name": "challenge_3",
+  "version": "1.0.0",
+  "description": "multistep checkout experience",
+  "main": "server.js",
+  "scripts": {
+    "test": "\"echo Hello World\"",
+    "start": "nodemon server.js",
+    "react-dev": "./node_modules/.bin/babel client --out-dir public --presets @babel/preset-react --source-maps inline --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hackreactor/hrsf131-mini-apps-1.git"
+  },
+  "author": "Victor Wong",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/hackreactor/hrsf131-mini-apps-1/issues"
+  },
+  "homepage": "https://github.com/hackreactor/hrsf131-mini-apps-1#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mongodb": "^3.6.2",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.12.1",
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.1",
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2"
+  }
+}

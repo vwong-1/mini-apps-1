@@ -1,0 +1,15 @@
+import React from 'react';
+
+class App extends React.Component {
+  super(props) {
+    this.state = {};
+  }
+
+  render() {
+    return /*#__PURE__*/React.createElement("div", null, "Is React working?");
+  }
+
+}
+
+export default App;
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIi4uLy4uL2NsaWVudC9zcmMvYXBwLmpzeCJdLCJuYW1lcyI6WyJSZWFjdCIsIkFwcCIsIkNvbXBvbmVudCIsInN1cGVyIiwicHJvcHMiLCJzdGF0ZSIsInJlbmRlciJdLCJtYXBwaW5ncyI6IkFBQUEsT0FBT0EsS0FBUCxNQUFrQixPQUFsQjs7QUFFQSxNQUFNQyxHQUFOLFNBQWtCRCxLQUFLLENBQUNFLFNBQXhCLENBQWtDO0FBQ2hDQyxFQUFBQSxLQUFLLENBQUNDLEtBQUQsRUFBUTtBQUNYLFNBQUtDLEtBQUwsR0FBYSxFQUFiO0FBR0Q7O0FBRURDLEVBQUFBLE1BQU0sR0FBRztBQUNQLHdCQUNFLHFEQURGO0FBR0Q7O0FBWCtCOztBQWNsQyxlQUFlTCxHQUFmIiwic291cmNlc0NvbnRlbnQiOlsiaW1wb3J0IFJlYWN0IGZyb20gJ3JlYWN0JztcblxuY2xhc3MgQXBwIGV4dGVuZHMgUmVhY3QuQ29tcG9uZW50IHtcbiAgc3VwZXIocHJvcHMpIHtcbiAgICB0aGlzLnN0YXRlID0ge1xuXG4gICAgfVxuICB9XG5cbiAgcmVuZGVyKCkge1xuICAgIHJldHVybiAoXG4gICAgICA8ZGl2PklzIFJlYWN0IHdvcmtpbmc/PC9kaXY+XG4gICAgKVxuICB9XG59XG5cbmV4cG9ydCBkZWZhdWx0IEFwcDsiXX0=
