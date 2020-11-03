@@ -32,15 +32,26 @@ app.post('/user', (req, res) => {
 });
 
 app.put('/user', (req, res) => {
-  console.log(req.body);
   let id = new ObjectId(req.body.id);
   delete req.body['id'];
-  console.log({_id : id}, {$set: req.body});
   db.collection('users').findOneAndUpdate({_id : id}, {$set: req.body}, (err, result) => {
     if (err) {
       res.sendStatus(400);
     } else {
       res.status(201).json(result);
+    }
+  });
+});
+
+app.get('/user', (req, res) => {
+  let id = new ObjectId(req.body.id);
+  console.log(id);
+  db.collection('users').find({_id: id}).toArray((err, result) => {
+    if (err) {
+      res.sendStatus(400);
+    } else {
+      console.log(result);
+      res.status(200).json(result);
     }
   });
 });
