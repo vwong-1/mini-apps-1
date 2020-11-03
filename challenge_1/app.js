@@ -1,4 +1,5 @@
 let count = 0;
+let gameWinner;
 
 function player() {
   if (count % 2) {
@@ -102,11 +103,15 @@ for (let i = 0; i < rows.length; i++) {
   for (let j = 0; j < rows[i].cells.length; j++) {
     rows[i].cells[j].addEventListener("click", (e) => {
       e.preventDefault();
+      if (gameWinner) {
+        return;
+      }
       if (!e.target.innerHTML) {
         e.target.innerHTML = player();
         if (count > 4) {
           let winner = checkForWinner();
           if (winner) {
+            gameWinner = winner;
             setTimeout(() => alert(`${winner} is the winner! Please reset the board.`), 100);
           }
         }
@@ -124,4 +129,5 @@ document.getElementById("reset").addEventListener("click", (e) => {
     cells[i].innerHTML = '';
   }
   count = 0;
+  gameWinner = null;
 });
