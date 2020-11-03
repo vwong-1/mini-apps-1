@@ -46,7 +46,7 @@ app.put('/user', (req, res) => {
 app.get('/user', (req, res) => {
   let id = new ObjectId(req.body.id);
   console.log(id);
-  db.collection('users').find({_id: id}).toArray((err, result) => {
+  db.collection('users').find().sort({_id: -1}).limit(1).toArray((err, result) => {
     if (err) {
       res.sendStatus(400);
     } else {

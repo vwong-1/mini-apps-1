@@ -192,19 +192,18 @@ class Summary extends React.Component {
     this.props.formClick();
   }
 
-  // componentDidMount() {
-
-  // }
-
-  render() {
+  componentDidMount() {
     let id = Object.assign({}, {id: this.props.id});
     console.log(id);
     axios.get('/user', id)
       .then((res) => {
         console.log(res);
-        this.setState(res[0]);
+        this.setState(res.data[0]);
       })
       .catch(err => console.log(err))
+  }
+
+  render() {
     return (
       <div>
         <label>Name:</label>
