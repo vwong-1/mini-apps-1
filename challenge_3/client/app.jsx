@@ -9,24 +9,35 @@ class F1 extends React.Component {
     }
 
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleInputChange(e) {
     let value = e.target.value;
     let name = e.target.name;
-    this.setState({[name]: value});
+    this.setState({ [name]: value });
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+    axios.post('/user', this.state)
+      .then((res) => {
+        console.log(res);
+        this.props.formClick();
+      })
+      .catch(err => console.log(err))
   }
 
   render() {
     return (
       <form>
         <label>Name:</label>
-        <input type="text" id="name" name="name" required onChange={this.handleInputChange} /><br />
+        <input type="text" id="name" name="name" onChange={this.handleInputChange} /><br />
         <label>Email:</label>
-        <input type="text" id="email" name="email" required onChange={this.handleInputChange} /><br />
+        <input type="text" id="email" name="email" onChange={this.handleInputChange} /><br />
         <label>Password:</label>
-        <input type="password" id="password" name="password" required onChange={this.handleInputChange} /><br />
-        <button type="submit" onClick={this.props.formClick}>Next</button>
+        <input type="text" id="password" name="password" onChange={this.handleInputChange} /><br />
+        <button type="submit" onClick={this.handleClick}>Next</button>
       </form>
     )
   }
@@ -46,12 +57,23 @@ class F2 extends React.Component {
     }
 
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleInputChange(e) {
     let value = e.target.value;
     let name = e.target.name;
-    this.setState({[name]: value});
+    this.setState({ [name]: value });
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+    axios.post('/user', this.state)
+      .then((res) => {
+        console.log(res);
+        this.props.formClick();
+      })
+      .catch(err => console.log(err))
   }
 
   render() {
@@ -65,7 +87,7 @@ class F2 extends React.Component {
         <input type="text" id="zipcode" name="zipcode" placeholder="94103" onChange={this.handleInputChange} /><br />
         <label>Phone Number</label><br></br>
         <input type="text" id="phone" name="phone" placeholder="111-123-1234" onChange={this.handleInputChange} /><br />
-        <button type="submit" onClick={this.props.formClick}>Next</button>
+        <button type="submit" onClick={this.handleClick}>Next</button>
       </form>
     )
   }
@@ -84,12 +106,23 @@ class F3 extends React.Component {
     }
 
     this.handleInputChange = this.handleInputChange.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleInputChange(e) {
     let value = e.target.value;
     let name = e.target.name;
-    this.setState({[name]: value});
+    this.setState({ [name]: value });
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+    axios.post('/user', this.state)
+      .then((res) => {
+        console.log(res);
+        this.props.formClick();
+      })
+      .catch(err => console.log(err))
   }
 
   render() {
@@ -105,17 +138,17 @@ class F3 extends React.Component {
         <input type="text" id="cvv" name="cvv" placeholder="123" onChange={this.handleInputChange} /><br />
         <label>Billing Zip Code</label><br />
         <input type="text" id="billingzip" name="billingzip" placeholder="00001" onChange={this.handleInputChange} /><br />
-        <button type="submit" onClick={this.props.formClick}>Complete Checkout!</button>
+        <button type="submit" onClick={this.handleClick}>Complete Checkout!</button>
       </form>
     )
   }
 }
 
-var F0 = function ({formClick}) {
+var F0 = function ({ formClick }) {
   return (
-    <form id="checkout">
+    <div id="checkout">
       <button onClick={formClick}>Checkout!</button>
-    </form>
+    </div>
   )
 }
 
@@ -135,23 +168,24 @@ class App extends React.Component {
     } else {
       form++;
     }
-    this.setState({formNumber: form})
+    this.setState({ formNumber: form })
   }
 
   render() {
+    // console.log(this.state);
     let form;
     switch (this.state.formNumber) {
       case 0:
-        form = <F0 formClick={this.formClick}/>;
+        form = <F0 formClick={this.formClick} />;
         break;
       case 1:
-        form = <F1 formClick={this.formClick}/>;
+        form = <F1 formClick={this.formClick} />;
         break;
       case 2:
-        form = <F2 formClick={this.formClick}/>;
+        form = <F2 formClick={this.formClick} />;
         break;
       case 3:
-        form = <F3 formClick={this.formClick}/>;
+        form = <F3 formClick={this.formClick} />;
         break;
     }
     return (
