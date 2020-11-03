@@ -20,7 +20,8 @@ class F1 extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    axios.post('/user', this.state)
+    let update = Object.assign(this.state, {id: this.props.id});
+    axios.put('/user', update)
       .then((res) => {
         console.log(res);
         this.props.formClick();
@@ -68,7 +69,8 @@ class F2 extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    axios.post('/user', this.state)
+    let update = Object.assign(this.state, {id: this.props.id});
+    axios.put('/user', update)
       .then((res) => {
         console.log(res);
         this.props.formClick();
@@ -117,7 +119,8 @@ class F3 extends React.Component {
 
   handleClick(e) {
     e.preventDefault();
-    axios.post('/user', this.state)
+    let update = Object.assign(this.state, {id: this.props.id});
+    axios.put('/user', update)
       .then((res) => {
         console.log(res);
         this.props.formClick();
@@ -145,48 +148,121 @@ class F3 extends React.Component {
 }
 
 var F0 = function ({ formClick }) {
+  let handleClick = function (e) {
+    e.preventDefault();
+    axios.post('/user', {})
+      .then((res) => {
+        console.log(res.data.insertedId);
+        formClick(res.data.insertedId);
+      })
+      .catch(err => console.log(err))
+  }
+
   return (
     <div id="checkout">
-      <button onClick={formClick}>Checkout!</button>
+      <div>Continue to checkout...</div>
+      <button onClick={handleClick}>Checkout!</button>
     </div>
   )
+}
+
+class Summary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: '',
+      email: '',
+      addressl1: '',
+      addressl2: '',
+      city: '',
+      state: '',
+      zipcode: '',
+      phone: '',
+      card: '',
+      expmonth: '',
+      expyear: '',
+      cvv: '',
+      billingzip: ''
+    }
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(e) {
+    e.preventDefault();
+    this.props.formClick();
+  }
+
+  render() {
+    return (
+      <div>
+        <label>Name:</label>
+        <div>{this.state.name}</div><br />
+        <label>Email:</label>
+        <div>{this.state.email}</div><br />
+        <label>Address</label><br></br>
+        <div>{this.state.addressl1}</div><br />
+        <div>{this.state.addressl2}</div><br />
+        <div>{this.state.city}</div><a>,</a>
+        <div>{this.state.state}</div><a> </a>
+        <div>{this.state.zipcode}</div><br />
+        <label>Phone Number</label><br></br>
+        <div>{this.state.phone}</div><br />
+        <label>Card Number</label><br />
+        <div>{this.state.card}</div><br />
+        <label>Exp Month</label><br />
+        <div>{this.state.expmonth}</div><br />
+        <label>Exp Year</label><br />
+        <div>{this.state.expyear}</div><br />
+        <label>CVV</label><br></br>
+        <div>{this.state.cvv}</div><br />
+        <label>Billing Zip Code</label><br />
+        <div>{this.state.billingzip}</div><br />
+        <button onClick={this.handleClick}>Purchase</button>
+      </div>
+    )
+  }
 }
 
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      formNumber: 0
+      formNumber: 0,
+      id: ''
     }
     this.formClick = this.formClick.bind(this);
   }
 
-  formClick() {
+  formClick(id = this.state.id) {
     let form = this.state.formNumber;
-    if (this.state.formNumber === 3) {
+    if (this.state.formNumber === 4) {
       form = 0;
     } else {
       form++;
     }
-    this.setState({ formNumber: form })
+    this.setState({ formNumber: form, id: id})
   }
 
   render() {
-    // console.log(this.state);
     let form;
     switch (this.state.formNumber) {
       case 0:
         form = <F0 formClick={this.formClick} />;
         break;
       case 1:
-        form = <F1 formClick={this.formClick} />;
+        form = <F1 formClick={this.formClick} id={this.state.id} />;
         break;
       case 2:
-        form = <F2 formClick={this.formClick} />;
+        form = <F2 formClick={this.formClick} id={this.state.id} />;
         break;
       case 3:
-        form = <F3 formClick={this.formClick} />;
+        form = <F3 formClick={this.formClick} id={this.state.id} />;
         break;
+      case 4:
+        form = <Summary formClick={this.formClick} id={this.state.id} />;
+        break;
+      default:
+        form = <F0 formClick={this.formClick} />;
     }
     return (
       <div>
