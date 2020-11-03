@@ -128,6 +128,10 @@ document.getElementById("reset").addEventListener("click", (e) => {
   for (let i = 0; i < cells.length; i++) {
     cells[i].innerHTML = '';
   }
-  count = 0;
+  if (gameWinner === 'X') {
+    count = 0;
+  } else {
+    count = 1;
+  }
   gameWinner = null;
 });
