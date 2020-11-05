@@ -1,0 +1,37 @@
+{
+  "name": "challenge_4",
+  "version": "1.0.0",
+  "description": "Connect 4",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "react-dev": "webpack -d --watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vwong-1/hrsf131-mini-apps-1.git"
+  },
+  "keywords": [
+    "game",
+    "challenge"
+  ],
+  "author": "Victor Wong",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/vwong-1/hrsf131-mini-apps-1/issues"
+  },
+  "homepage": "https://github.com/vwong-1/hrsf131-mini-apps-1#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "webpack": "^4.44.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.3",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.5",
+    "babel-loader": "^8.1.0",
+    "webpack-cli": "^4.2.0"
+  }
+}
