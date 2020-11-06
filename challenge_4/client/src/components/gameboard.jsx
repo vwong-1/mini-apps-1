@@ -99,11 +99,11 @@ class Board extends React.Component {
       row = row-col;
       col = 0;
     } else {
-      row = 0;
       col = col-row;
+      row = 0;
     }
     for (let i = 0; i < board.length; i++) {
-      if (row + i > board.length - 1 || col + i > board.length - 1) {
+      if (row + i > board.length - 1 || col + i > board.length) {
         return false;
       }
       if (board[row + i][col + i] === player) {
@@ -132,7 +132,7 @@ class Board extends React.Component {
       col = sum - row;
     }
     for (let i = 0; i < board.length; i++) {
-      if (row - i < 0 || col + i > board.length - 1) {
+      if (row - i < 0 || col + i > board.length) {
         return false;
       }
       if (board[row - i][col + i] === player) {
