@@ -1,0 +1,20 @@
+td, table {
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
+  border-radius: 25px;
+}
+
+table {
+  width: 250px;
+  height: 250px;
+  padding: 5px 10px;
+}
+
+.X {
+  background-color: blue;
+}
+
+.O {
+  background-color: red;
+}
