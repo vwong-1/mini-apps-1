@@ -40,8 +40,14 @@ class Board extends React.Component {
       this.announce(player);
       return;
     }
-    // chekMajor(row, col, player);
-    // checkMinor(row,col, player);
+    if (this.checkMajor(row, col, player)) {
+      this.announce(player);
+      return;
+    }
+    if (this.checkMinor(row, col, player)) {
+      this.announce(player);
+      return;
+    }
   }
 
   announce(player) {
@@ -70,6 +76,66 @@ class Board extends React.Component {
     let count = 0;
     for (let i = 0; i < board.length; i++) {
       if (board[i][col] === player) {
+        count++;
+        if (count >= 4) {
+          this.state.win = true;
+          return true;
+        }
+      } else {
+        count = 0;
+      }
+    }
+    return false;
+  }
+
+  checkMajor(row, col, player) {
+    //figure out starting row/col
+    let board = this.state.board;
+    let count = 0;
+    if (row === col) {
+      row = 0;
+      col = 0;
+    } else if (row > col) {
+      row = row-col;
+      col = 0;
+    } else {
+      row = 0;
+      col = col-row;
+    }
+    for (let i = 0; i < board.length; i++) {
+      if (row + i > board.length - 1 || col + i > board.length - 1) {
+        return false;
+      }
+      if (board[row + i][col + i] === player) {
+        count++;
+        if (count >= 4) {
+          this.state.win = true;
+          return true;
+        }
+      } else {
+        count = 0;
+      }
+    }
+    return false;
+  }
+
+  checkMinor(row, col, player) {
+    //figure out starting row/col
+    let board = this.state.board;
+    let count = 0;
+    let sum = row + col;
+    if (sum < board.length) {
+      row = sum;
+      col = 0;
+    } else {
+      row = board.length - 1;
+      col = sum - row;
+    }
+    for (let i = 0; i < board.length; i++) {
+      if (row - i < 0 || col + i > board.length - 1) {
+        return false;
+      }
+      if (board[row - i][col + i] === player) {
         count++;
         if (count >= 4) {
           this.state.win = true;
